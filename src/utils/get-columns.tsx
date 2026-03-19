@@ -1,5 +1,6 @@
 import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
 import { Button, Popconfirm, Space } from 'antd';
+import dayjs from 'dayjs';
 
 import type { TableColumns, TableRow } from '@/types';
 
@@ -24,6 +25,7 @@ export const getColumns = ({
   {
     dataIndex: 'date',
     key: 'date',
+    render: (value: string) => dayjs(value).format('DD.MM.YYYY'),
     sorter: (left, right) => new Date(left.date).getTime() - new Date(right.date).getTime(),
     title: 'Дата',
     width: isMobile ? 140 : undefined,
